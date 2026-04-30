@@ -9,16 +9,37 @@ class member{
     }
 }
 
-### How to figure out who a person is from the tree to another person from the same tree?
 
-Check which generation the two people are from
+### Current family tree
 
-if generation of person 1 is the same as person 2
-    then the relationship of person 1 and person 2 are either siblings, cousins or the same person
+GEN 0
+John
 
-else if they are from different generations
+GEN 1
+Maria -> John
+Alex -> John
+Sophia -> John
+
+GEN 2
+Thomas -> Maria
+Isabella -> Maria
+Henry -> Sophia
+Grace -> Alex
+
+class FamilyMember {
+    constructor(name, parent = null) {
+        this.name = name;
+        this.parent = parent;
+    }
+
     
-    then the relationship of person 1 and person 2 are either child-to-parent, 
+}
+
+
+
+    
+
+
 
 
 
