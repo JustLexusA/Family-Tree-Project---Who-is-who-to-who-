@@ -6,11 +6,13 @@ let thomas = new FamilyMember('Thomas', maria)
 let isabella = new FamilyMember('Isabella', maria)
 let henry = new FamilyMember('Henry', sophia)
 let grace = new FamilyMember('Grace', alex)
+let gerald = new FamilyMember('Gerald', thomas)
 
-let Family = [john, maria, alex, sophia, thomas, isabella, henry, grace]
+let Family = [john, maria, alex, sophia, thomas, isabella, henry, grace, gerald]
 
 // Variables to store and compare the two persons
 let personA, personB;
+let generationPersonA, generationPersonB;
 let genDiff;
 let relationshipofAB; // siblings, cousins, parent, child, etc.
 
@@ -23,6 +25,19 @@ function setup() {
     drawFamilyTree();
 
     // Display the family in the console
-    print(Family)
+    // print(Family)
+    
+    // Selected family members (RANDOMIZE)
+    personA = Family[Math.floor(Math.random() * Family.length)]
+    personB = Family[Math.floor(Math.random() * Family.length)]
+    generationPersonA = personA.findGeneration();
+    generationPersonB = personB.findGeneration();
+    
+    print(personA)
+    print(`${personA.name} is in generation ${generationPersonA}`)
+    print(personB)
+    print(`${personB.name} is in generation ${generationPersonB}`)
+
+
 
 }

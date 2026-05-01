@@ -7,7 +7,18 @@ class FamilyMember {
         this.parent = parent;
     }
 
-    findChildren() {
-        
+    findGeneration() {
+        let generation = 0;
+        // 'this' is the family member, if personA was Grace then 'this' would be Grace
+        let currentPerson = this;
+
+        // If currentPerson does have a parent, go up the family tree and add to generation.
+        // If it checks currentPerson and it doesn't have a parent (parent == null) then we stop
+        // Should end up at John, the common ancestor.
+        while (currentPerson.parent !== null) {
+            generation++;
+            currentPerson = currentPerson.parent
+        }
+        return generation
     }
 }
