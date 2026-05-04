@@ -5,11 +5,13 @@ class FamilyMember {
     constructor(name, parent = null) {
         this.name = name;
         this.parent = parent;
+        this.parentX = null; // x coordinate for drawing the family member
+        this.parentY = null; // y coordinate for drawing the family member
     }
 
     findGeneration() {
         let generation = 0;
-        // 'this' is the family member, if personA was Grace then 'this' would be Grace
+        // 'this' is the family member, if personA was Grace then 'this' would be Grace (remember this)
         let currentPerson = this;
 
         // If currentPerson does have a parent, go up the family tree and add to generation.
@@ -20,5 +22,26 @@ class FamilyMember {
             currentPerson = currentPerson.parent
         }
         return generation
+    }
+
+    findChildren() {
+        // let children of this family member would be any family member in the Family array that has this family member as their parent.
+        let children = [];
+        Family.forEach(FamilyMember => {
+            if (FamilyMember.parent === this) {
+                children.push(FamilyMember);
+            }
+        });
+        return children;
+    }
+
+    findLineage() {
+        let lineage = [];
+        let currentPerson = this;
+        while (currentPerson.parent !== null) {
+            lineage.push(currentPerson.parent);
+            currentPerson = currentPerson.parent;
+        }
+        return lineage;
     }
 }

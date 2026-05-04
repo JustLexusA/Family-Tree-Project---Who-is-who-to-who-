@@ -13,6 +13,7 @@ let Family = [john, maria, alex, sophia, thomas, isabella, henry, grace, gerald]
 // Variables to store and compare the two persons
 let personA, personB;
 let generationPersonA, generationPersonB;
+let childrenOfA, childrenOfB;
 let genDiff;
 let relationshipofAB; // siblings, cousins, parent, child, etc.
 
@@ -24,6 +25,8 @@ function setup() {
     // Draws the family tree
     drawFamilyTree();
 
+    // Find the relationship between two random family members
+    
     // Display the family in the console
     // print(Family)
     
@@ -32,12 +35,15 @@ function setup() {
     personB = Family[Math.floor(Math.random() * Family.length)]
     generationPersonA = personA.findGeneration();
     generationPersonB = personB.findGeneration();
+    childrenOfA = personA.findChildren();
+    childrenOfB = personB.findChildren();
     
-    print(personA)
+    findRelationship(personA, personB);
+    
+    // print(personA)
     print(`${personA.name} is in generation ${generationPersonA}`)
-    print(personB)
+    print(`${personA.name} has ${childrenOfA.length} children: ${childrenOfA.map(child => child.name).join(', ')}`)
+    // print(personB)
     print(`${personB.name} is in generation ${generationPersonB}`)
-
-
-
+    print(`${personB.name} has ${childrenOfB.length} children: ${childrenOfB.map(child => child.name).join(', ')}`)
 }
