@@ -48,11 +48,12 @@ function setup() {
     lineageOfA = personA.findLineage();
     lineageOfB = personB.findLineage();
     
-    findRelationship(personA, personB);
+    relationshipofAB = findRelationship(personA, personB);
     
     // print(personA)
     print(`${personA.name} is in generation ${generationPersonA}`)
     print(`${personA.name} has ${childrenOfA.length} children: ${childrenOfA.map(child => child.name).join(', ')}`)
+    print(`${personA.name} is ${relationshipofAB} ${personB.name}`)
     print(`Lineage of ${personA.name}: ${lineageOfA.map(ancestor => ancestor.name).join(' -> ')}`)
     // print(personB)
     print(`${personB.name} is in generation ${generationPersonB}`)
