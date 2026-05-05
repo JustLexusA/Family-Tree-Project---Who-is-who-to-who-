@@ -37,7 +37,6 @@ function drawFamilyMembers () {
             // The x offset is determined by the number of children the parent has.
             rect(x, y, 50, 25)
             text(FamilyMember.name, x, y)
-            // print(FamilyMember.name + " is a child of " + FamilyMember.parent.name)
         }
     });
 }

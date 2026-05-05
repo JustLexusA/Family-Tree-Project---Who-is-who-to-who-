@@ -7,8 +7,16 @@ let isabella = new FamilyMember('Isabella', maria)
 let henry = new FamilyMember('Henry', sophia)
 let grace = new FamilyMember('Grace', alex)
 let gerald = new FamilyMember('Gerald', thomas)
+let darlan = new FamilyMember('Darlan', isabella)
+let tobias = new FamilyMember('Tobias', henry)
+let beethoven = new FamilyMember('Beethoven', henry)
+let miigwans = new FamilyMember('Miigwans', grace)
+let joseph = new FamilyMember('Joseph', darlan)
+let peter = new FamilyMember('Peter', darlan)
+let Harry = new FamilyMember('Harry', beethoven)
 
-let Family = [john, maria, alex, sophia, thomas, isabella, henry, grace, gerald]
+
+let Family = [john, maria, alex, sophia, thomas, isabella, henry, grace, gerald, darlan, tobias, beethoven, miigwans, joseph, peter, Harry];
 
 // Variables to store and compare the two persons
 let personA, personB;
@@ -31,19 +39,23 @@ function setup() {
     // print(Family)
     
     // Selected family members (RANDOMIZE)
-    personA = Family[Math.floor(Math.random() * Family.length)]
-    personB = Family[Math.floor(Math.random() * Family.length)]
+    personA = Family[Math.floor(Math.random() * Family.length)];
+    personB = Family[Math.floor(Math.random() * Family.length)];
     generationPersonA = personA.findGeneration();
     generationPersonB = personB.findGeneration();
     childrenOfA = personA.findChildren();
     childrenOfB = personB.findChildren();
+    lineageOfA = personA.findLineage();
+    lineageOfB = personB.findLineage();
     
     findRelationship(personA, personB);
     
     // print(personA)
     print(`${personA.name} is in generation ${generationPersonA}`)
     print(`${personA.name} has ${childrenOfA.length} children: ${childrenOfA.map(child => child.name).join(', ')}`)
+    print(`Lineage of ${personA.name}: ${lineageOfA.map(ancestor => ancestor.name).join(' -> ')}`)
     // print(personB)
     print(`${personB.name} is in generation ${generationPersonB}`)
     print(`${personB.name} has ${childrenOfB.length} children: ${childrenOfB.map(child => child.name).join(', ')}`)
+    print(`Lineage of ${personB.name}: ${lineageOfB.map(ancestor => ancestor.name).join(' -> ')}`)
 }

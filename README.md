@@ -18,6 +18,24 @@ Isabella -> Maria
 Henry -> Sophia
 Grace -> Alex
 
+GEN 3
+Gerald -> Thomas
+Darlan -> Isabella
+Tobias -> Henry
+Beethoven -> Henry
+Miigwans -> Grace
+
+
+GEN 4
+Joseph -> Darlan
+Peter -> Darlan
+Harry -> Beethoven
+
+GEN 5
+Mozart -> Beethoven
+
+GEN 6
+
     
 
 
