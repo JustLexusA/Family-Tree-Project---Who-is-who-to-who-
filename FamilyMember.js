@@ -5,8 +5,7 @@ class FamilyMember {
     constructor(name, parent = null) {
         this.name = name;
         this.parent = parent;
-        this.parentX = null; // x coordinate for drawing the family member
-        this.parentY = null; // y coordinate for drawing the family member
+        this.drawPos = null
     }
 
     findGeneration() {
@@ -24,10 +23,10 @@ class FamilyMember {
         return generation
     }
 
-    findChildren() {
+    findChildren(relatives = []) {
         // let children of this family member would be any family member in the Family array that has this family member as their parent.
         let children = [];
-        Family.forEach(FamilyMember => {
+        relatives.forEach(FamilyMember => {
             if (FamilyMember.parent === this) {
                 children.push(FamilyMember);
             }
@@ -43,5 +42,23 @@ class FamilyMember {
             currentPerson = currentPerson.parent;
         }
         return lineage;
+    }
+
+    draw(x, y) {
+        // If x and y are available set the draw position to those coordinates,
+            if (x && y) {
+                this.drawPos = createVector(x, y);
+            }
+
+        if (this.drawPos === null) {
+            push();
+            textAlign(CENTER, CENTER);
+            rectMode(CENTER);
+            fill(255);
+            rect(this.drawPos.x, this.drawPos.y, 100, 50);
+            fill(0);
+            text(this.name, this.drawPos.x, this.drawPos.y);
+            pop();
+        }
     }
 }

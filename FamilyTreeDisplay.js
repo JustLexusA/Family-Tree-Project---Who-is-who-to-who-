@@ -3,40 +3,29 @@ let GenerationGap = 50
 
 
 function drawFamilyTree () {
-    Family.forEach(FamilyMember => {
-        FamilyMember.findGeneration();
-    });
-    
-    // Draw each box where the members name is.
-    drawFamilyMembers();
+    // Get the original person (the common ancestor)
+    let originalPerson = getOriginalPerson(Family);
+    if (originalPerson) {
+        // Start drawing the family tree from the original person
+        drawParentToChildren(originalPerson, Family, 0, width / 2, width / 2);
+    } else {
+        console.error("No original person found in the family tree.");
+    }
 }
 
-function drawFamilyMembers () {
-    rectMode(CENTER)
-    textAlign(CENTER, CENTER)
-
-    Family.forEach(FamilyMember => {
-        // If the member being checked does not have a parent, it's the original generation and should be drawn at the top of the tree. 
-        let x = windowWidth / 2;
-        // The y coordinate is the generation number multiplied by the gap between generations.
-        let y = (FamilyMember.findGeneration() * GenerationGap) + OriginalY;
-        if (FamilyMember.parent == null) {
-            
-            rect(x, y, 50, 25)
-            text(FamilyMember.name, x, y)
-        }   else { // If the member does have a parent, draw below the parent. 
-            let parent = FamilyMember.parent;
-
-            let siblings = parent.findChildren();
-
-            let offset = siblings.indexOf(FamilyMember) * 200 - (siblings.length - 1) * 100; // Calculate the offset based on the index of the sibling and the total number of siblings.
-            
-            x = windowWidth / 2 + offset; // Set the x coordinate based on the parent's x coordinate and the offset.
-
-
-            // The x offset is determined by the number of children the parent has.
-            rect(x, y, 50, 25)
-            text(FamilyMember.name, x, y)
-        }
+function drawParentToChildren(parent, relatives, generation, x, width) {
+    // Calculate the y position based on the generation
+    let y = OriginalY + generation * GenerationGap;
+    
+    
+    let children = parent.findChildren(relatives);
+    let numChildren = children.length;
+    let GapBetweenChildren = width / numChildren;
+    let StartX = x - width / 2
+    children.forEach((child, index) => {
+        let childX = StartX + GapBetweenChildren * (index + 0.5);
+        // Draw a line from the parent to the child
+        push();
+        stroke(0);
     });
 }

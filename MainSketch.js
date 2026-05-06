@@ -43,12 +43,16 @@ function setup() {
     personB = Family[Math.floor(Math.random() * Family.length)];
     generationPersonA = personA.findGeneration();
     generationPersonB = personB.findGeneration();
-    childrenOfA = personA.findChildren();
-    childrenOfB = personB.findChildren();
+    childrenOfA = personA.findChildren(relatives = Family);
+    childrenOfB = personB.findChildren(relatives = Family);
     lineageOfA = personA.findLineage();
     lineageOfB = personB.findLineage();
     
-    relationshipofAB = findRelationship(personA, personB);
+    relationshipofAB = findRelationshipBetween(personA, personB);
+
+    Family.forEach(FamilyMember => {
+        FamilyMember.draw();
+    });
     
     // print(personA)
     print(`${personA.name} is in generation ${generationPersonA}`)
