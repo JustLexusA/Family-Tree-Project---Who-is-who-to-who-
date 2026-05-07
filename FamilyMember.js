@@ -45,20 +45,25 @@ class FamilyMember {
     }
 
     draw(x, y) {
-        // If x and y are available set the draw position to those coordinates,
-            if (x && y) {
-                this.drawPos = createVector(x, y);
-            }
+        if (x !== undefined && y !== undefined) {
+            this.drawPos = createVector(x, y);
+        }
 
         if (this.drawPos === null) {
-            push();
-            textAlign(CENTER, CENTER);
-            rectMode(CENTER);
-            fill(255);
-            rect(this.drawPos.x, this.drawPos.y, 100, 50);
-            fill(0);
-            text(this.name, this.drawPos.x, this.drawPos.y);
-            pop();
+            return;
         }
+
+        push();
+        textAlign(CENTER, CENTER);
+        rectMode(CENTER);
+        fill(255);
+        stroke(0);
+        rect(this.drawPos.x, this.drawPos.y, 50, 20);
+        fill(0);
+        noStroke();
+        textStyle(BOLD);
+        textSize(10);
+        text(this.name, this.drawPos.x, this.drawPos.y);
+        pop();
     }
 }

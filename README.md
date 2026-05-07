@@ -5,34 +5,48 @@
 ### Current family tree
 
 GEN 0
-John
+Pikachu
 
 GEN 1
-Maria -> John
-Alex -> John
-Sophia -> John
+Charizard -> Pikachu
+Blastoise -> Pikachu
+Venusaur -> Pikachu
 
 GEN 2
-Thomas -> Maria
-Isabella -> Maria
-Henry -> Sophia
-Grace -> Alex
+Dragonite -> Charizard
+Gyarados -> Charizard
+Arcanine -> Venusaur
+Alakazam -> Blastoise
 
 GEN 3
-Gerald -> Thomas
-Darlan -> Isabella
-Tobias -> Henry
-Beethoven -> Henry
-Miigwans -> Grace
-
+Machamp -> Dragonite
+Golem -> Gyarados
+Articuno -> Arcanine
+Zapdos -> Arcanine
+Moltres -> Alakazam
+Feraligatr -> Alakazam
+Meganium -> Alakazam
+Rayquaza -> Blastoise
+Electrode -> Charizard
+Lapras -> Blastoise
+Ho-Oh -> Dragonite
+Lugia -> Alakazam
+Groudon -> Arcanine
 
 GEN 4
-Joseph -> Darlan
-Peter -> Darlan
-Harry -> Beethoven
+Mewtwo -> Golem
+Mew -> Golem
+Typhlosion -> Zapdos
+Kyogre -> Articuno
+Rayquaza -> Feraligatr
+Dialga -> Machamp
+Salamence -> Meganium
+Metagross -> Zapdos
 
 GEN 5
-Mozart -> Beethoven
+Palkia -> Mewtwo
+Giratina -> Typhlosion
+Arceus -> Mewtwo
 
 GEN 6
 
