@@ -42,6 +42,8 @@ let childrenOfA, childrenOfB;
 let genDiff;
 let relationshipofAB; // siblings, cousins, parent, child, etc.
 
+// Count for the fibonacci sequence
+let count = 0;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -51,19 +53,14 @@ function setup() {
     drawFamilyTree();
 
     // Selected family members (RANDOMIZE)
-    personA = isabella // Family[Math.floor(Math.random() * Family.length)];
-    personB = beethoven // Family[Math.floor(Math.random() * Family.length)];
+    personA = Family[Math.floor(Math.random() * Family.length)];
+    personB = Family[Math.floor(Math.random() * Family.length)];
     generationPersonA = personA.findGeneration();
     generationPersonB = personB.findGeneration();
     childrenOfA = personA.findChildren(relatives = Family);
     childrenOfB = personB.findChildren(relatives = Family);
     lineageOfA = personA.findLineage();
     lineageOfB = personB.findLineage();
-    
-    // Find the relationship between two random family members
-    relationshipofAB = findRelationshipBetween(personA, personB);
-    
-
     Family.forEach(FamilyMember => {
         FamilyMember.findChildren(relatives = Family);
         FamilyMember.findLineage();
@@ -71,12 +68,18 @@ function setup() {
         FamilyMember.draw();
     });
     
-    // print(personA)
-    print(`${personA.name} is in generation ${generationPersonA}`)
-    print(`${personA.name} has ${childrenOfA.length} children: ${childrenOfA.map(child => child.name).join(', ')}`)
-    print(`Lineage of ${personA.name}: ${lineageOfA.map(ancestor => ancestor.name).join(' -> ')}`)
-    // print(personB)
-    print(`${personB.name} is in generation ${generationPersonB}`)
-    print(`${personB.name} has ${childrenOfB.length} children: ${childrenOfB.map(child => child.name).join(', ')}`)
-    print(`Lineage of ${personB.name}: ${lineageOfB.map(ancestor => ancestor.name).join(' -> ')}`)
+    // Find the relationship between two random family members
+    relationshipofAB = findRelationshipBetween(personA, personB);
+    drawRelationshipArrow(personA, personB);
+    
+
+    
+    // // print(personA)
+    // print(`${personA.name} is in generation ${generationPersonA}`)
+    // print(`${personA.name} has ${childrenOfA.length} children: ${childrenOfA.map(child => child.name).join(', ')}`)
+    // print(`Lineage of ${personA.name}: ${lineageOfA.map(ancestor => ancestor.name).join(' -> ')}`)
+    // // print(personB)
+    // print(`${personB.name} is in generation ${generationPersonB}`)
+    // print(`${personB.name} has ${childrenOfB.length} children: ${childrenOfB.map(child => child.name).join(', ')}`)
+    // print(`Lineage of ${personB.name}: ${lineageOfB.map(ancestor => ancestor.name).join(' -> ')}`)
 }
