@@ -44,6 +44,20 @@ class FamilyMember {
         return lineage;
     }
 
+    depthToCommonAncestor(ancestor) {
+        if (ancestor == this) {
+            return 0;
+            }
+            let lineage = this.findLineage();
+            let depth = lineage.findIndex(member => member === ancestor);
+            if (depth >= 0) {
+                return depth + 1; // +1 because we want to count the ancestor as well
+            } else {
+            return -1; // Return -1 if the ancestor is not found in the lineage
+        }
+    }
+        
+
     draw(x, y) {
         if (x !== undefined && y !== undefined) {
             this.drawPos = createVector(x, y);

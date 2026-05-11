@@ -9,15 +9,23 @@ function findRelationshipBetween(personA, personB) {
     if (personA === personB) {
         relationshipofAB = "the same person as ";
     } 
-    if (personA !== personB) {
-        if (genDiff === 0) {
-            relationshipofAB = 'possibily a sibling or cousin of ';
-        } else if (genDiff === 1) {
-            relationshipofAB = `possibly a parent or child or nephew/niece and aunt/uncle, or 1st, 2nd, 3rd, etc. cousins ${timesRemoved} times removed of `;
-        } else if (genDiff >= 2) {
-            relationshipofAB = `possibly a ${"great ".repeat(greatness)}grandparent or grandchild, or 1st, 2nd, 3rd, etc. cousins ${timesRemoved} times removed of `;
-        }
-    }
+    // Compare the common ancestor of personA and personB to determine their relationship.
+    
+
+
+    // Check if both personA and personB have the same oldest common ancestor.
+    // if (personA !== personB) {
+    //     if (genDiff === 0) {
+    //         relationshipofAB = 'possibily a sibling or cousin of ';
+    //     } else if (genDiff === 1) {
+    //         relationshipofAB = `possibly a parent or child or nephew/niece and aunt/uncle, or 1st, 2nd, 3rd, etc. cousins ${timesRemoved} times removed of `;
+    //     } else if (genDiff >= 2) {
+    //         relationshipofAB = `possibly a ${"great ".repeat(greatness)}grandparent or grandchild, or 1st, 2nd, 3rd, etc. cousins ${timesRemoved} times removed of `;
+    //     }
+    // }
+
+
+    
     
     
     

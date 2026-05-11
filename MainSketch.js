@@ -53,8 +53,8 @@ function setup() {
     drawFamilyTree();
 
     // Selected family members (RANDOMIZE)
-    personA = Family[Math.floor(Math.random() * Family.length)];
-    personB = Family[Math.floor(Math.random() * Family.length)];
+    personA = john // Family[Math.floor(Math.random() * Family.length)];
+    personB = venusaur_child // Family[Math.floor(Math.random() * Family.length)];
     generationPersonA = personA.findGeneration();
     generationPersonB = personB.findGeneration();
     childrenOfA = personA.findChildren(relatives = Family);
@@ -66,6 +66,7 @@ function setup() {
         FamilyMember.findLineage();
         FamilyMember.findGeneration();
         FamilyMember.draw();
+        FamilyMember.depthToCommonAncestor(ancestor);
     });
     
     // Find the relationship between two random family members
