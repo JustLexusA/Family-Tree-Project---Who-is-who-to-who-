@@ -49,12 +49,9 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     background(200);
 
-    // Draws the family tree
-    drawFamilyTree();
-
     // Selected family members (RANDOMIZE)
-    personA = john // Family[Math.floor(Math.random() * Family.length)];
-    personB = venusaur_child // Family[Math.floor(Math.random() * Family.length)];
+    personA = alakazam_child // Family[Math.floor(Math.random() * Family.length)];
+    personB = alakazam_child // Family[Math.floor(Math.random() * Family.length)];
     generationPersonA = personA.findGeneration();
     generationPersonB = personB.findGeneration();
     childrenOfA = personA.findChildren(relatives = Family);
@@ -66,12 +63,18 @@ function setup() {
         FamilyMember.findLineage();
         FamilyMember.findGeneration();
         FamilyMember.draw();
-        FamilyMember.depthToCommonAncestor(ancestor);
+        FamilyMember.depthToCommonAncestor(ancestor = getOriginalPerson(Family));
     });
     
     // Find the relationship between two random family members
     relationshipofAB = findRelationshipBetween(personA, personB);
     drawRelationshipArrow(personA, personB);
+    
+    // Draws the family tree
+    drawFamilyTree();
+
+    // Figure out the relationship between personA and personB and print it to the console.
+    print(`${personA.name} is the ${relationshipofAB}${personB.name}`);
     
 
     

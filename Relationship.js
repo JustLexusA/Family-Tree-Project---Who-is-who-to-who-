@@ -7,10 +7,8 @@ function findRelationshipBetween(personA, personB) {
 
     // Check if personA and personB are the same person.
     if (personA === personB) {
-        relationshipofAB = "the same person as ";
+        return "the same person as ";
     } 
-    // Compare the common ancestor of personA and personB to determine their relationship.
-    
 
 
     // Check if both personA and personB have the same oldest common ancestor.
@@ -23,16 +21,6 @@ function findRelationshipBetween(personA, personB) {
     //         relationshipofAB = `possibly a ${"great ".repeat(greatness)}grandparent or grandchild, or 1st, 2nd, 3rd, etc. cousins ${timesRemoved} times removed of `;
     //     }
     // }
-
-
-    
-    
-    
-    
-
-
-
-    print(`${personA.name} is ${relationshipofAB}${personB.name}`);
 }
 
 function getOriginalPerson(relatives) {
@@ -41,7 +29,8 @@ function getOriginalPerson(relatives) {
         while (currentPerson.parent !== null) {
             currentPerson = currentPerson.parent;
         }
-    return currentPerson;
+        return currentPerson;
     }
+    return null; // No original person found???
 }
 
