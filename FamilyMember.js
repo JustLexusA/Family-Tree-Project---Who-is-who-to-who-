@@ -10,7 +10,7 @@ class FamilyMember {
 
     findGeneration() {
         let generation = 0;
-        // 'this' is the family member, if personA was Grace then 'this' would be Grace (remember this)
+        // 'this' is the family member, if personA was alakazam then 'this' would be alakazam (remember this)
         let currentPerson = this;
 
         // If currentPerson does have a parent, go up the family tree and add to generation.

@@ -10,6 +10,13 @@ function findRelationshipBetween(personA, personB) {
         return "the same person as ";
     } 
 
+    // Checks if the depth from personA to personB is -1
+    if (personA.depthToCommonAncestor(personB) >= 0) {
+        if (genDiff === 0) {
+            return 'sibling of ';
+        }
+    }
+
 
     // Check if both personA and personB have the same oldest common ancestor.
     // if (personA !== personB) {
