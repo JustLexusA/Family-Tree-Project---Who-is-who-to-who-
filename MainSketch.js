@@ -1,39 +1,39 @@
-let john = new FamilyMember('Pikachu', null);
-let maria = new FamilyMember('Charizard', john)
-let alex = new FamilyMember('Blastoise', john)
-let sophia = new FamilyMember('Venusaur', john)
-let thomas = new FamilyMember('Dragonite', maria)
-let isabella = new FamilyMember('Gyarados', maria)
-let henry = new FamilyMember('Arcanine', sophia)
-let grace = new FamilyMember('Alakazam', alex)
-let gerald = new FamilyMember('Machamp', thomas)
-let darlan = new FamilyMember('Golem', isabella)
-let tobias = new FamilyMember('Articuno', henry)
-let beethoven = new FamilyMember('Zapdos', henry)
-let miigwans = new FamilyMember('Moltres', grace)
-let joseph = new FamilyMember('Mewtwo', darlan)
-let peter = new FamilyMember('Mew', darlan)
-let harry = new FamilyMember('Typhlosion', beethoven)
-let owen = new FamilyMember('Feraligatr', grace)
-let jerry = new FamilyMember('Meganium', grace)
-let fred = new FamilyMember('Rayquaza', alex)
+let pikachu = new FamilyMember('Pikachu', null);
+let charizard = new FamilyMember('Charizard', pikachu)
+let blastoise = new FamilyMember('Blastoise', pikachu)
+let venusaur = new FamilyMember('Venusaur', pikachu)
+let dragonite = new FamilyMember('Dragonite', charizard)
+let gyarados = new FamilyMember('Gyarados', charizard)
+let arcanine = new FamilyMember('Arcanine', venusaur)
+let alakazam = new FamilyMember('Alakazam', blastoise)
+let machamp = new FamilyMember('Machamp', dragonite)
+let golem = new FamilyMember('Golem', gyarados)
+let articuno = new FamilyMember('Articuno', arcanine)
+let zapdos = new FamilyMember('Zapdos', arcanine)
+let moltres = new FamilyMember('Moltres', alakazam)
+let mewtwo = new FamilyMember('Mewtwo', golem)
+let mew = new FamilyMember('Mew', golem)
+let typhlosion = new FamilyMember('Typhlosion', zapdos)
+let feraligatr = new FamilyMember('Feraligatr', alakazam)
+let meganium = new FamilyMember('Meganium', alakazam)
+let rayquaza = new FamilyMember('Rayquaza', blastoise)
 
 // New Pokemon family members
-let pikachu_child1 = new FamilyMember('Electrode', maria)
-let pikachu_child2 = new FamilyMember('Lapras', alex)
-let charizard_child = new FamilyMember('Ho-Oh', thomas)
-let blastoise_child = new FamilyMember('Lugia', grace)
-let venusaur_child = new FamilyMember('Groudon', henry)
-let arcanine_child = new FamilyMember('Kyogre', tobias)
-let alakazam_child = new FamilyMember('Rayquaza', owen)
-let machamp_child = new FamilyMember('Dialga', gerald)
-let golem_child = new FamilyMember('Palkia', joseph)
-let zapdos_child = new FamilyMember('Giratina', harry)
-let mewtwo_child = new FamilyMember('Arceus', joseph)
-let alakazam_child2 = new FamilyMember('Salamence', jerry)
-let arcanine_child2 = new FamilyMember('Metagross', beethoven)
+let electrode = new FamilyMember('Electrode', charizard)
+let lapras = new FamilyMember('Lapras', blastoise)
+let hooh = new FamilyMember('Ho-Oh', dragonite)
+let lugia = new FamilyMember('Lugia', alakazam)
+let groudon = new FamilyMember('Groudon', arcanine)
+let kyogre = new FamilyMember('Kyogre', articuno)
+let rayquaza2 = new FamilyMember('Rayquaza', feraligatr)
+let dialga = new FamilyMember('Dialga', machamp)
+let palkia = new FamilyMember('Palkia', mewtwo)
+let giratina = new FamilyMember('Giratina', typhlosion)
+let arceus = new FamilyMember('Arceus', mewtwo)
+let salamence = new FamilyMember('Salamence', meganium)
+let metagross = new FamilyMember('Metagross', zapdos)
 
-let Family = [fred, jerry, owen, john, maria, alex, sophia, thomas, isabella, henry, grace, gerald, darlan, tobias, beethoven, miigwans, joseph, peter, harry, pikachu_child1, pikachu_child2, charizard_child, blastoise_child, venusaur_child, arcanine_child, alakazam_child, machamp_child, golem_child, zapdos_child, mewtwo_child, alakazam_child2, arcanine_child2];
+let Family = [rayquaza, meganium, feraligatr, pikachu, charizard, blastoise, venusaur, dragonite, gyarados, arcanine, alakazam, machamp, golem, articuno, zapdos, moltres, mewtwo, mew, typhlosion, electrode, lapras, hooh, lugia, groudon, kyogre, rayquaza2, dialga, palkia, giratina, arceus, salamence, metagross];
 
 // Variables to store and compare the two persons
 let personA, personB;
@@ -50,8 +50,8 @@ function setup() {
     background(200);
 
     // Selected family members (RANDOMIZE)
-    personA = alakazam_child // Family[Math.floor(Math.random() * Family.length)];
-    personB = alakazam_child // Family[Math.floor(Math.random() * Family.length)];
+    personA = lugia //Family[Math.floor(Math.random() * Family.length)];
+    personB = blastoise //Family[Math.floor(Math.random() * Family.length)];
     generationPersonA = personA.findGeneration();
     generationPersonB = personB.findGeneration();
     childrenOfA = personA.findChildren(relatives = Family);
@@ -66,13 +66,13 @@ function setup() {
         FamilyMember.depthToCommonAncestor(ancestor = getOriginalPerson(Family));
     });
     
+    // Draws the family tree
+    drawFamilyTree();
+
     // Find the relationship between two random family members
     relationshipofAB = findRelationshipBetween(personA, personB);
     drawRelationshipArrow(personA, personB);
     
-    // Draws the family tree
-    drawFamilyTree();
-
     // Figure out the relationship between personA and personB and print it to the console.
     print(`${personA.name} is the ${relationshipofAB}${personB.name}`);
     

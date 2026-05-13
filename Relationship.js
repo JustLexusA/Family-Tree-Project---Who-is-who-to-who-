@@ -10,6 +10,16 @@ function findRelationshipBetween(personA, personB) {
         return "the same person as ";
     } 
 
+    // Calculate depth of personA to personB then print to console.
+    let depthAtoB = personA.depthToCommonAncestor(personB);
+    let depthBtoA = personB.depthToCommonAncestor(personA);
+    let mainDepthValue = 0;
+    if (depthAtoB === -1 && depthBtoA === -1) {
+        mainDepthValue = depthAtoB; // or depthBtoA, they are the same.
+    } else if (depthAtoB === -1) {
+        mainDepthValue = depthBtoA;
+    }
+    print(`The depth of ${personA.name} to ${personB.name} is ${mainDepthValue}`);
 
     // Check if both personA and personB have the same oldest common ancestor.
     // if (personA !== personB) {
