@@ -1,26 +1,23 @@
 function findRelationshipBetween(personA, personB) {
-    let genA = personA.findGeneration();
-    let genB = personB.findGeneration();
-    let genDiff = abs(genA - genB); // Will be used for 1st, 2nd cousins once, twice removed, etc.
+    getOrdinalNumber();
+    genA = personA.findGeneration();
+    genB = personB.findGeneration();
+    genDiff = abs(genA - genB); // Will be used for 1st, 2nd cousins once, twice removed, etc.
+    let uncleauntgreatness = genDiff - 1; // Calculates how many times great is needed for uncles/aunts and great uncles/aunts.
     let parentgreatness = genDiff - 2; // Calculates how many times great is needed for grandparents and great grandparents.
-    let timesRemoved = abs(genA - genB); // Will be used for cousins once, twice removed, etc.
     //  If genDiff is 2, then greatness is 0 and we don't need to add "great" to the relationship.
     //  If genDiff is 3, then greatness is 1 and we need to add "great" once to the relationship and so on.
+    let orderOfCousin = getOrdinalNumber() // Calculates if they are 1st, 2nd, 3rd, etc. cousins.
+    let timesRemoved = abs(genA - genB); // Will be used for cousins once, twice removed, etc.
+
+    // Print the difference in generations between personA and personB to the console.
+    print(`The difference in generations between ${personA.name} and ${personB.name} is ${genDiff}`);
 
     // Check if personA and personB are the same person.
     if (personA === personB) {
         return "the same person as ";
     } 
 
-<<<<<<< HEAD
-    // Checks if the depth from personA to personB is -1
-    if (personA.depthToCommonAncestor(personB) >= 0) {
-        if (genDiff === 0) {
-            return 'sibling of ';
-        }
-    }
-
-=======
     // Calculate depth of personA to personB then print to console.
     let depthAtoB = personA.depthToCommonAncestor(personB);
     let depthBtoA = personB.depthToCommonAncestor(personA);
@@ -34,36 +31,48 @@ function findRelationshipBetween(personA, personB) {
     } else if (depthAtoB == -1 && depthBtoA == -1) {
         mainDepthValue = depthAtoB // or depthBtoA, they are both -1 (Not DIRECTLY related)
     }
+    print(`The depth of ${personA.name} to ${personB.name} is ${mainDepthValue}`);
+
+
     // If both are -1, check if they have a common ancestor through their lineage. If they do,
     // then one of them is an uncle/aunt or nephew/niece of the other
     // If they don't have a common ancestor, then they are just cousins, at least in this family tree.
+    let commonAncestor = null; 
+    let count = 0;
     if (mainDepthValue == -1) {
-        let count = 0;
-        
-        if (genA > genB) {
-            let commonAncestor = personA.parent;
-            if (count <= genDiff + 1) {
+        count = 0;
+        // Check whose the younger generationally then go up the lineage by how many generations they are apart
+        // Then check, if commonAncestor == the other person's parent, then they are (great) uncle/aunt and (great) nephew/niece. If not, then they are cousins.
+        if (genA >= genB) {
+            commonAncestor = personA.parent;
+            while (count !== genDiff) {
                 commonAncestor = commonAncestor.parent;
                 count++;
             } 
-            
+
+            if (commonAncestor == personB.parent) {
+                relationshipofAB = `${"great ".repeat(uncleauntgreatness)}uncle/aunt of `;
+            } else {
+                relationshipofAB = `cousin${timesRemoved == 0 ? "" : " " + timesRemoved + " times removed " + "of "}`;
+            }
+        } else if (genB >= genA) { 
+            commonAncestor = personB.parent;
+            while (count !== genDiff) {
+                commonAncestor = commonAncestor.parent;
+                count++;
+            } 
+
+            if (commonAncestor == personA.parent) {
+                relationshipofAB = `${"great ".repeat(uncleauntgreatness)}uncle/aunt of `;
+            } else {
+                relationshipofAB = `cousin${timesRemoved == 0 ? "" : " " + timesRemoved + " times removed " + "of "}`;
+            }
         }
+        print(count)
+        print(commonAncestor.name)
     }
-
-
-    print(`The depth of ${personA.name} to ${personB.name} is ${mainDepthValue}`);
->>>>>>> eb5b7212190ac40f4599d49b1d51111f8588a610
-
-    // Check if both personA and personB have the same oldest common ancestor.
-    // if (personA !== personB) {
-    //     if (genDiff === 0) {
-    //         relationshipofAB = 'possibily a sibling or cousin of ';
-    //     } else if (genDiff === 1) {
-    //         relationshipofAB = `possibly a parent or child or nephew/niece and aunt/uncle, or 1st, 2nd, 3rd, etc. cousins ${timesRemoved} times removed of `;
-    //     } else if (genDiff >= 2) {
-    //         relationshipofAB = `possibly a ${"great ".repeat(greatness)}grandparent or grandchild, or 1st, 2nd, 3rd, etc. cousins ${timesRemoved} times removed of `;
-    //     }
-    // }
+    // Print the relationship between personA and personB to the console.
+    print(`${personA.name} is the ${relationshipofAB}${personB.name}`);
 }
 
 function getOriginalPerson(relatives) {
@@ -77,3 +86,8 @@ function getOriginalPerson(relatives) {
     return null; // No original person found???
 }
 
+function getOrdinalNumber() {
+    let generationA = personA.findGeneration()
+    let generationB = personB.findGeneration()
+
+}
