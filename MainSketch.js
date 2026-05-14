@@ -50,8 +50,8 @@ function setup() {
     background(200);
 
     // Selected family members (RANDOMIZE)
-    personA = lugia //Family[Math.floor(Math.random() * Family.length)];
-    personB = blastoise //Family[Math.floor(Math.random() * Family.length)];
+    personA = Family[Math.floor(Math.random() * Family.length)];
+    personB = Family[Math.floor(Math.random() * Family.length)];
     generationPersonA = personA.findGeneration();
     generationPersonB = personB.findGeneration();
     childrenOfA = personA.findChildren(relatives = Family);

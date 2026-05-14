@@ -1,7 +1,9 @@
 function findRelationshipBetween(personA, personB) {
-    let genDiff = abs(personA.findGeneration() - personB.findGeneration()); // Will be used for 1st, 2nd cousins once, twice removed, etc.
-    let greatness = genDiff - 2; // Calculates how many times great is needed for grandparents and great grandparents.
-    let timesRemoved = abs(personA.findGeneration() - personB.findGeneration()); // Will be used for cousins once, twice removed, etc.
+    let genA = personA.findGeneration();
+    let genB = personB.findGeneration();
+    let genDiff = abs(genA - genB); // Will be used for 1st, 2nd cousins once, twice removed, etc.
+    let parentgreatness = genDiff - 2; // Calculates how many times great is needed for grandparents and great grandparents.
+    let timesRemoved = abs(genA - genB); // Will be used for cousins once, twice removed, etc.
     //  If genDiff is 2, then greatness is 0 and we don't need to add "great" to the relationship.
     //  If genDiff is 3, then greatness is 1 and we need to add "great" once to the relationship and so on.
 
@@ -14,11 +16,32 @@ function findRelationshipBetween(personA, personB) {
     let depthAtoB = personA.depthToCommonAncestor(personB);
     let depthBtoA = personB.depthToCommonAncestor(personA);
     let mainDepthValue = 0;
-    if (depthAtoB === -1 && depthBtoA === -1) {
-        mainDepthValue = depthAtoB; // or depthBtoA, they are the same.
-    } else if (depthAtoB === -1) {
+
+    // If both depths are -1, they are not directly related, but if only one is -1, then they are related.
+    if (depthAtoB == -1 && depthBtoA != -1) {
         mainDepthValue = depthBtoA;
+    } else if (depthBtoA == -1 && depthAtoB != -1) {
+        mainDepthValue = depthAtoB;
+    } else if (depthAtoB == -1 && depthBtoA == -1) {
+        mainDepthValue = depthAtoB // or depthBtoA, they are both -1 (Not DIRECTLY related)
     }
+    // If both are -1, check if they have a common ancestor through their lineage. If they do,
+    // then one of them is an uncle/aunt or nephew/niece of the other
+    // If they don't have a common ancestor, then they are just cousins, at least in this family tree.
+    if (mainDepthValue == -1) {
+        let count = 0;
+        
+        if (genA > genB) {
+            let commonAncestor = personA.parent;
+            if (count <= genDiff + 1) {
+                commonAncestor = commonAncestor.parent;
+                count++;
+            } 
+            
+        }
+    }
+
+
     print(`The depth of ${personA.name} to ${personB.name} is ${mainDepthValue}`);
 
     // Check if both personA and personB have the same oldest common ancestor.
