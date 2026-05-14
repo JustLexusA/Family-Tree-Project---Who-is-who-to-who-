@@ -12,6 +12,7 @@ let articuno = new FamilyMember('Articuno', arcanine)
 let zapdos = new FamilyMember('Zapdos', arcanine)
 let moltres = new FamilyMember('Moltres', alakazam)
 let mewtwo = new FamilyMember('Mewtwo', golem)
+<<<<<<< HEAD
 let peter = new FamilyMember('Mew', golem)
 let harry = new FamilyMember('Typhlosion', zapdos)
 let owen = new FamilyMember('Feraligatr', alakazam)
@@ -34,6 +35,30 @@ let alakazam_child2 = new FamilyMember('Salamence', jerry)
 let arcanine_child2 = new FamilyMember('Metagross', zapdos)
 
 let Family = [fred, jerry, owen, pikachu, charizard, blastoise, venusaur, dragonite, gyarados, arcanine, alakazam, machamp, golem, articuno, zapdos, moltres, mewtwo, peter, harry, pikachu_child1, pikachu_child2, charizard_child, blastoise_child, venusaur_child, arcanine_child, alakazam_child, machamp_child, golem_child, zapdos_child, mewtwo_child, alakazam_child2, arcanine_child2];
+=======
+let mew = new FamilyMember('Mew', golem)
+let typhlosion = new FamilyMember('Typhlosion', zapdos)
+let feraligatr = new FamilyMember('Feraligatr', alakazam)
+let meganium = new FamilyMember('Meganium', alakazam)
+let rayquaza = new FamilyMember('Rayquaza', blastoise)
+
+// New Pokemon family members
+let electrode = new FamilyMember('Electrode', charizard)
+let lapras = new FamilyMember('Lapras', blastoise)
+let hooh = new FamilyMember('Ho-Oh', dragonite)
+let lugia = new FamilyMember('Lugia', alakazam)
+let groudon = new FamilyMember('Groudon', arcanine)
+let kyogre = new FamilyMember('Kyogre', articuno)
+let rayquaza2 = new FamilyMember('Rayquaza', feraligatr)
+let dialga = new FamilyMember('Dialga', machamp)
+let palkia = new FamilyMember('Palkia', mewtwo)
+let giratina = new FamilyMember('Giratina', typhlosion)
+let arceus = new FamilyMember('Arceus', mewtwo)
+let salamence = new FamilyMember('Salamence', meganium)
+let metagross = new FamilyMember('Metagross', zapdos)
+
+let Family = [rayquaza, meganium, feraligatr, pikachu, charizard, blastoise, venusaur, dragonite, gyarados, arcanine, alakazam, machamp, golem, articuno, zapdos, moltres, mewtwo, mew, typhlosion, electrode, lapras, hooh, lugia, groudon, kyogre, rayquaza2, dialga, palkia, giratina, arceus, salamence, metagross];
+>>>>>>> eb5b7212190ac40f4599d49b1d51111f8588a610
 
 // Variables to store and compare the two persons
 let personA, personB;
@@ -68,11 +93,18 @@ function setup() {
     
     // Draws the family tree
     drawFamilyTree();
+<<<<<<< HEAD
+=======
+
+>>>>>>> eb5b7212190ac40f4599d49b1d51111f8588a610
     // Find the relationship between two random family members
     relationshipofAB = findRelationshipBetween(personA, personB);
     drawRelationshipArrow(personA, personB);
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> eb5b7212190ac40f4599d49b1d51111f8588a610
     // Figure out the relationship between personA and personB and print it to the console.
     print(`${personA.name} is the ${relationshipofAB}${personB.name}`);
     

@@ -15,7 +15,7 @@ class FamilyMember {
 
         // If currentPerson does have a parent, go up the family tree and add to generation.
         // If it checks currentPerson and it doesn't have a parent (parent == null) then we stop
-        // Should end up at John, the common ancestor.
+        // Should end up at pikachu, the common ancestor.
         while (currentPerson.parent !== null) {
             generation++;
             currentPerson = currentPerson.parent
@@ -49,7 +49,7 @@ class FamilyMember {
             return 0;
             }
             let lineage = this.findLineage();
-            let depth = lineage.findIndex(member => member === ancestor);
+            let depth = lineage.findIndex(member => member === ancestor); // Find the distance to the ancestor in the lineage array
             if (depth >= 0) {
                 return depth + 1; // +1 because we want to count the ancestor as well
             } else {
