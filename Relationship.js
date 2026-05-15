@@ -44,35 +44,38 @@ function findRelationshipBetween(personA, personB) {
         // Check whose the younger generationally then go up the lineage by how many generations they are apart
         // Then check, if commonAncestor == the other person's parent, then they are (great) uncle/aunt and (great) nephew/niece. If not, then they are cousins.
         if (genA >= genB) {
-            commonAncestor = personA.parent;
-            while (count !== genDiff) {
+            commonAncestor = personA;
+            while (count !== genDiff + 1) {
                 commonAncestor = commonAncestor.parent;
                 count++;
             } 
-
-            if (commonAncestor == personB.parent) {
-                relationshipofAB = `${"great ".repeat(uncleauntgreatness)}uncle/aunt of `;
+            if (commonAncestor == personB.parent) { // If the ancestor of personA is personB's parent then personB is an uncle/aunt of personA
+                relationshipofAB = `${"great ".repeat(uncleauntgreatness)}uncle/aunt of `;  
             } else {
-                relationshipofAB = `cousin${timesRemoved == 0 ? "" : " " + timesRemoved + " times removed " + "of "}`;
+                relationshipofAB = `cousin${timesRemoved == 0 ? " of " : " " + timesRemoved + " times removed of "}`;
             }
         } else if (genB >= genA) { 
-            commonAncestor = personB.parent;
-            while (count !== genDiff) {
+            commonAncestor = personB;
+            while (count !== genDiff + 1) {
                 commonAncestor = commonAncestor.parent;
                 count++;
             } 
-
-            if (commonAncestor == personA.parent) {
-                relationshipofAB = `${"great ".repeat(uncleauntgreatness)}uncle/aunt of `;
-            } else {
-                relationshipofAB = `cousin${timesRemoved == 0 ? "" : " " + timesRemoved + " times removed " + "of "}`;
+                if (commonAncestor == personA.parent) {
+                  relationshipofAB = `${"great ".repeat(uncleauntgreatness)}uncle/aunt of `;
+                } else {
+                relationshipofAB = `cousin${timesRemoved == 0 ? " of " : " " + timesRemoved + " times removed of "}`;
             }
         }
+        let olderPerson = personA
         print(count)
-        print(commonAncestor.name)
+        if (genA > genB) {
+            olderPerson = personB
+        }
+        print(commonAncestor.name + " " + olderPerson.name)
     }
     // Print the relationship between personA and personB to the console.
     print(`${personA.name} is the ${relationshipofAB}${personB.name}`);
+    
 }
 
 function getOriginalPerson(relatives) {

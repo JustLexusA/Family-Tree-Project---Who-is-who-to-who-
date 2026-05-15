@@ -42,9 +42,6 @@ let childrenOfA, childrenOfB;
 let genDiff;
 let relationshipofAB; // siblings, cousins, parent, child, etc.
 
-// Count for the fibonacci sequence
-let count = 0;
-
 function setup() {
     createCanvas(windowWidth, windowHeight);
     background(200);
@@ -53,8 +50,8 @@ function setup() {
     personA = Family[Math.floor(Math.random() * Family.length)];
     personB = Family[Math.floor(Math.random() * Family.length)];
     // Selected family members (MANUAL)
-    // personB = zapdos;
-    // personA = pikachu;
+    // personB = dragonite;
+    // personA = mew;
     generationPersonA = personA.findGeneration();
     generationPersonB = personB.findGeneration();
     childrenOfA = personA.findChildren(relatives = Family);
@@ -74,16 +71,4 @@ function setup() {
     // Find the relationship between two random family members
     relationshipofAB = findRelationshipBetween(personA, personB);
     drawRelationshipArrow(personA, personB);
-    
-    // Figure out the relationship between personA and personB and print it to the console.
-    // print(`${personA.name} is the ${relationshipofAB}${personB.name}`);
-
-    // // print(personA)
-    // print(`${personA.name} is in generation ${generationPersonA}`)
-    // print(`${personA.name} has ${childrenOfA.length} children: ${childrenOfA.map(child => child.name).join(', ')}`)
-    // print(`Lineage of ${personA.name}: ${lineageOfA.map(ancestor => ancestor.name).join(' -> ')}`)
-    // // print(personB)
-    // print(`${personB.name} is in generation ${generationPersonB}`)
-    // print(`${personB.name} has ${childrenOfB.length} children: ${childrenOfB.map(child => child.name).join(', ')}`)
-    // print(`Lineage of ${personB.name}: ${lineageOfB.map(ancestor => ancestor.name).join(' -> ')}`)
 }
